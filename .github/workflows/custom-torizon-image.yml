@@ -7,7 +7,7 @@ jobs:
       - name: Fetch source
         uses: actions/checkout@v3
       - name: Create Docker container with application
-        run:  docker buildx build -t flaskapp .
+        run:  docker buildx create --use --name multi-arch-builder && docker buildx build -t flaskapp .
       - name: Fetch TCB
         run:  wget https://raw.githubusercontent.com/toradex/tcb-env-setup/master/tcb-env-setup.sh
       - name: Create custom Torizon image
