@@ -1,4 +1,4 @@
-name: Release custom Torizon image
+name: custom-torizon-image
 on: [push]
 jobs:
   make-release:
