@@ -9,6 +9,6 @@ jobs:
       - name: Create Docker container with application
         run:  docker buildx build -t flaskapp .
       - name: Fetch TCB
-      - run:  wget https://raw.githubusercontent.com/toradex/tcb-env-setup/master/tcb-env-setup.sh
+        run:  wget https://raw.githubusercontent.com/toradex/tcb-env-setup/master/tcb-env-setup.sh
       - name: Create custom Torizon image
-      - run:  source tcb-env-setup.sh && torizoncore-builder build
+        run:  source tcb-env-setup.sh && torizoncore-builder build
