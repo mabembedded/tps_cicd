@@ -1,0 +1,15 @@
+input:
+  easy-installer:
+    toradex-feed:
+      version: "5.3.0"
+      release: quarterly
+      machine: colibri-imx8x
+      distro: torizon-upstream
+      variant: torizon-core-docker
+      build-number: "7"
+
+output:
+  easy-installer:
+    local: image_custom
+    bundle:
+      docker-compose.yml
