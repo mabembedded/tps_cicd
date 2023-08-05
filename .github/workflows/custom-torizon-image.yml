@@ -7,8 +7,17 @@ jobs:
       - name: Fetch source
         uses: actions/checkout@v3
       - name: Create Docker container with application
-        run:  docker buildx create --use --name multi-arch-builder && docker buildx build -t flaskapp .
-      - name: Fetch TCB
-        run:  wget https://raw.githubusercontent.com/toradex/tcb-env-setup/master/tcb-env-setup.sh
-      - name: Create custom Torizon image
-        run:  source tcb-env-setup.sh && torizoncore-builder build
+        run:  |
+              docker run -d -p 5000:5000 --restart=always --name registry registry:2
+              docker buildx create --use --name multi-arch-builder
+              docker buildx build --load -t flaskapp .
+              docker image tag flaskapp localhost:5000/flaskapp
+              docker image push localhost:5000/flaskapp
+      - name: Setup environment and build custom image
+        run:  |
+              mkdir ${GITHUB_WORKSPACE}/deploy
+              mkdir ${GITHUB_WORKSPACE}/storage
+              docker pull torizon/torizoncore-builder:3
+              docker run --rm -v${GITHUB_WORKSPACE}/deploy:/deploy -v${GITHUB_WORKSPACE}:/workdir -v${GITHUB_WORKSPACE}/storage:/storage -v/var/run/docker.sock:/var/run/docker.sock --network=host torizon/torizoncore-builder:3 build
+
+              ls -la

@@ -2,5 +2,5 @@ version: "3.8"
 
 services:
   flaskapp:
-    image: test-flaskapp
+    image: localhost:5000/flaskapp
     privileged: true
