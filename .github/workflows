@@ -1,0 +1,14 @@
+name: Release custom Torizon image
+on: [push]
+jobs:
+  make-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch source
+        uses: actions/checkout@v3
+      - name: Create Docker container with application
+        run:  docker buildx build -t flaskapp .
+      - name: Fetch TCB
+      - run:  wget https://raw.githubusercontent.com/toradex/tcb-env-setup/master/tcb-env-setup.sh
+      - name: Create custom Torizon image
+      - run:  source tcb-env-setup.sh && torizoncore-builder build
