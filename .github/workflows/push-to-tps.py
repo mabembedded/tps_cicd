@@ -32,7 +32,8 @@ print(response.json())
 
 # Try to upload a docker-compose
 # First read it
-os.listdir('../../')
+files_dir = os.listdir('../../')
+print(files_dir)
 with open('../../docker-compose.yml') as f:
     package_data = f.read()
 
