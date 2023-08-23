@@ -27,4 +27,4 @@ jobs:
         run:  |
               API_KEY=$(cat api_key.txt)
               API_SECRET=$(cat api_secret.txt)
-              python3 ./github/workflows/push-to-tps.py
+              python3 ./.github/workflows/push-to-tps.py
