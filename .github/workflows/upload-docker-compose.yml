@@ -3,6 +3,9 @@ on:
   push:
     tags:
       - 'v*'
+env:
+  API_SECRET: ${{ secrets.TPS_V2_SECRET }}
+  API_KEY: ${{ secrets.TPS_V2_API }}
 
 jobs:
   make-release:
@@ -11,9 +14,6 @@ jobs:
       - name: Fetch source
         uses: actions/checkout@v3
       - name: Fetch TPS OAuth Token
-        env:
-          API_SECRET: ${{ secret.TPS_V2_SECRET }}
-          API_KEY: ${{ secret.TPS_V2_API }}
         run:  |
-              echo "${API_SECRET}"
-              echo "${API_KEY}"
+              echo "$API_SECRET"
+              echo "$API_KEY"
