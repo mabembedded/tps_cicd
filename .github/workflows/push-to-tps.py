@@ -43,9 +43,10 @@ package_params = {
         'targetFormat': 'BINARY',
 }
 
+file_size = os.state('../../tps_cicd/docker-compose.yml')
 package_headers = {
         'Content-Type': 'application/octet-stream',
-        'Content-Length': package_data.length(),
+        'Content-Length': file_size.st_size,
         'Authorization': 'Bearer ' + access_token,
 }
 url = base_url + '/packages'
