@@ -41,6 +41,7 @@ package_params = {
         'name': 'tps_cicd_docker',
         'version': '1.0.0',
         'targetFormat': 'BINARY',
+        'hardwareId': 'colibri-imx8x',
 }
 
 file_size = os.stat('../tps_cicd/docker-compose.yml')
