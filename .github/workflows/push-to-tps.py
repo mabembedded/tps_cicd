@@ -46,7 +46,7 @@ package_params = {
 file_size = os.stat('../tps_cicd/docker-compose.yml')
 package_headers = {
         'Content-Type': 'application/octet-stream',
-        'Content-Length': file_size.st_size,
+        'Content-Length': str(file_size.st_size),
         'Authorization': 'Bearer ' + access_token,
 }
 url = base_url + '/packages'
