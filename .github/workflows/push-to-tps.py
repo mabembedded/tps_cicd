@@ -34,7 +34,7 @@ print(response.json())
 # First read it
 files_dir = os.listdir('../tps_cicd')
 print(files_dir)
-with open('../../docker-compose.yml') as f:
+with open('../tps_cicd/docker-compose.yml') as f:
     package_data = f.read()
 
 package_params = {
