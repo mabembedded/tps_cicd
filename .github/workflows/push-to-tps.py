@@ -18,7 +18,7 @@ oauth_data['client_secret'] = api_secret
 
 r = requests.post('https://kc.torizon.io/auth/realms/ota-users/protocol/openid-connect/token', headers=oauth_headers, data=oauth_data)
 response = r.text
-access_token = response['access_token']
+access_token = response["access_token"]
 
 secure_headers = dict()
 secure_headers['Authorization'] = 'Bearer ' + access_token
