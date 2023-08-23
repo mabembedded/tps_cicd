@@ -30,3 +30,4 @@ secure_data = {
         'limit': 10
 }
 response = requests.get(base_url, params=secure_data,headers=secure_headers)
+print(response)
