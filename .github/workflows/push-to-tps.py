@@ -29,5 +29,6 @@ secure_data = {
         'offset': 0,
         'limit': 10
 }
-response = requests.get(base_url, params=secure_data,headers=secure_headers)
+url = base_url + '/devices'
+response = requests.get(url, params=secure_data,headers=secure_headers)
 print(response)
