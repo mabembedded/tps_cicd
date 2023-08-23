@@ -45,7 +45,7 @@ package_params = {
 
 package_headers = {
         'Content-Type': 'application/octet-stream',
-        'Content-Length': data.length(),
+        'Content-Length': package_data.length(),
         'Authorization': 'Bearer ' + access_token,
 }
 url = base_url + '/packages'
