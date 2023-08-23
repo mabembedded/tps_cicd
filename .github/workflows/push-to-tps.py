@@ -28,3 +28,24 @@ secure_headers = {
 url = base_url + '/devices'
 response = requests.get(url, headers=secure_headers)
 print(response.json())
+
+
+# Try to upload a docker-compose
+# First read it
+with open('../../docker-compose.yml') as f:
+    package_data = f.read()
+
+package_params = {
+        'name': 'tps_cicd_docker',
+        'version': '1.0.0',
+        'targetFormat': 'BINARY',
+}
+
+package_headers = {
+        'Content-Type': 'application/octet-stream',
+        'Content-Length': data.length(),
+        'Authorization': 'Bearer ' + access_token,
+}
+url = base_url + '/packages'
+response = requests.post(url, headers=package_headers, params=package_params, data=package_data)
+print(response.json())
