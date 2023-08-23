@@ -25,6 +25,6 @@ jobs:
           working-directory: "./"
       - name: Fetch TPS OAuth Token
         run:  |
-              API_KEY=$(cat api_key.txt)
-              API_SECRET=$(cat api_secret.txt)
+              export API_KEY=$(cat api_key.txt)
+              export API_SECRET=$(cat api_secret.txt)
               python3 ./.github/workflows/push-to-tps.py
