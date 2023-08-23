@@ -43,7 +43,7 @@ package_params = {
         'targetFormat': 'BINARY',
 }
 
-file_size = os.stat('../../tps_cicd/docker-compose.yml')
+file_size = os.stat('../tps_cicd/docker-compose.yml')
 package_headers = {
         'Content-Type': 'application/octet-stream',
         'Content-Length': file_size.st_size,
