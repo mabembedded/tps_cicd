@@ -10,7 +10,9 @@ oauth_data = {
 }
 
 api_key=os.environ.get("API_KEY")
+print(api_key)
 api_secret=os.environ.get("API_SECRET")
+print(api_secret)
 oauth_data['client_id'] = api_key
 oauth_data['api_secret'] = api_secret
 
