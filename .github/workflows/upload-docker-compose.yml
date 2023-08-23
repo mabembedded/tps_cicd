@@ -3,17 +3,27 @@ on:
   push:
     tags:
       - 'v*'
-env:
-  API_SECRET: ${{ secrets.TPS_V2_SECRET }}
-  API_KEY: ${{ secrets.TPS_V2_API }}
-
 jobs:
   make-release:
     runs-on: ubuntu-latest
     steps:
       - name: Fetch source
         uses: actions/checkout@v3
+      - name: Fetch API key
+        uses: mobiledevops/secret-to-file-action@v1
+        with:
+          base64-encoded-secret: ${{ secrets.TPS_V2_API }}
+          filename: "api_key.txt"
+          is-executable: false
+          working-directory: "./"
+      - name: Fetch API secret
+        uses: mobiledevops/secret-to-file-action@v1
+        with:
+          base64-encoded-secret: ${{ secrets.TPS_V2_SECRET }}
+          filename: "api_secret.txt"
+          is-executable: false
+          working-directory: "./"
       - name: Fetch TPS OAuth Token
         run:  |
-              cp .github/workflows/upload-to-tps.sh ./
-              ./upload-to-tps.sh
+              cat api_key.txt
+              cat api_secret.txt
