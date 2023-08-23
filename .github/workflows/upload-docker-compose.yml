@@ -3,6 +3,10 @@ on:
   push:
     branches:
 
+env:
+  API_KEY: ${{ secrets.TPS_V2_API }}
+  API_SECRET: ${{ secrets.TPS_V2_SECRET }}
+
 jobs:
   make-release:
     runs-on: ubuntu-latest
@@ -25,6 +29,4 @@ jobs:
           working-directory: "./"
       - name: Fetch TPS OAuth Token
         run:  |
-              export API_KEY=$(cat api_key.txt)
-              export API_SECRET=$(cat api_secret.txt)
               python3 ./.github/workflows/push-to-tps.py
