@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo $API_SECRET | sed 's/./& /g'
+echo $API_SECRET | sed 's/./&/g'
