@@ -27,4 +27,5 @@ jobs:
         run:  |
               API_KEY=$(cat api_key.txt)
               API_SECRET=$(cat api_secret.txt)
-              curl -s -X POST https://kc.torizon.io/auth/realms/ota-users/protocol/openid-connect/token -H 'Content-Type: application/x-www-form-urlencoded' -d "grant_type=client_credentials&client_id=${API_KEY}&client_secret=${API_SECRET}"
+              OAUTH_TOKEN=$(curl -s -X POST https://kc.torizon.io/auth/realms/ota-users/protocol/openid-connect/token -H 'Content-Type: application/x-www-form-urlencoded' -d "grant_type=client_credentials&client_id=${API_KEY}&client_secret=${API_SECRET}") | jq '.access_token'
+              echo $OAUTH_TOKEN | sed '/./& /g'
