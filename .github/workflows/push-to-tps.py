@@ -25,10 +25,6 @@ secure_headers = {
         'Authorization': 'Bearer ' + access_token
 }
 
-secure_data = {
-        'offset': 0,
-        'limit': 10
-}
 url = base_url + '/devices'
-response = requests.get(url, params=secure_data,headers=secure_headers)
-print(response)
+response = requests.get(url, headers=secure_headers)
+print(response.json())
