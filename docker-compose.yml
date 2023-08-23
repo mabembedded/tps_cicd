@@ -2,5 +2,5 @@ version: "3.8"
 
 services:
   flaskapp:
-    image: localhost:5000/flaskapp
+    image: mablabs/sht31-flask:latest
     privileged: true
